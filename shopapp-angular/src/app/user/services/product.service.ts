@@ -22,7 +22,9 @@ export class ProductService {
       .set('keyword', keyword)
       .set('page', page.toString())
       .set('limit', limit.toString());
-    return this.http.get<Product[]>(this.urlGetAllProducts, { params });
+    return this.http.get<Product[]>(`${environment.apiNest}/products`, {
+      params,
+    });
   }
 
   getProductsByIds(productIds: number[]): Observable<Product[]> {
@@ -37,7 +39,7 @@ export class ProductService {
 
   getProductDetails(productId: number): Observable<any> {
     return this.http.get<Product[]>(
-      `${environment.apiBaseUrl}/products/${productId}`
+      `${environment.apiNest}/products/${productId}`
     );
   }
 }

@@ -6,7 +6,7 @@
     <title>Quản lý hàng hóa</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
-  
+
   <body>
     <div class="sidebar">
       <div class="logo">
@@ -41,7 +41,6 @@
               >Xuất hàng hóa</a
             >
           </li>
-          <li><a routerLink="/manager/provider-manager">Danh sách NCC</a></li>
           <li><a routerLink="/manager/store-manager">Danh sách Cửa hàng</a></li>
         </ul>
       </nav>
@@ -58,8 +57,12 @@
           (change)="searchProducts()"
         />
         <div class="user-info">
-          <span>Username</span>
-          <img src="https://via.placeholder.com/40" alt="User" />
+          <span>{{ userName }}</span>
+          <img
+            style="height: 50px; width: auto"
+            src="{{ this.avatar }}"
+            alt="User"
+          />
         </div>
       </header>
       <div class="content">

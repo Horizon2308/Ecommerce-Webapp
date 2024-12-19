@@ -185,6 +185,8 @@ public class ProductController {
             return ResponseEntity.accepted().body(new SuccessResponse<>(
                     productService.updateProduct(productId, productDTO),
                     "Update product has id: " + productId));
+
+
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ErrorResponse<>(e.getMessage()));
         }

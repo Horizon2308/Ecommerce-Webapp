@@ -49,11 +49,11 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           debugger;
-          response.data.products.content.forEach((product: Product) => {
-            product.url = `${environment.apiBaseUrl}/products/images/${product.thumbnail}`;
+          response.data.forEach((product: Product) => {
+            product.url = `${environment.apiNest}/products/images/${product.thumbnail}`;
           });
-          this.products = response.data.products.content;
-          this.totalPages = response.data.total_page;
+          this.products = response.data;
+          this.totalPages = response.total_page;
           this.visiblePages = this.getVisiblePagesArray(
             this.currentPage,
             this.totalPages
@@ -64,6 +64,11 @@ export class HomeComponent implements OnInit {
           console.error('Error fetching products:', error);
         },
       });
+  }
+
+  onCategoryId(id: number) {
+    this.selectedCategoryId = id;
+    this.searchProducts();
   }
 
   onPageChange(page: number) {
@@ -93,7 +98,7 @@ export class HomeComponent implements OnInit {
     this.categoryService.getAllCategories(page, limit).subscribe({
       next: (response: any) => {
         debugger;
-        this.categories = response.data.categories.content;
+        this.categories = response.data;
       },
       complete: () => {
         debugger;

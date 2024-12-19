@@ -53,14 +53,24 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/user/{user_id}")
-    public ResponseEntity<?> getOrdersByUserId(@PathVariable("user_id") Long userId,
-                                               @RequestParam(value = "page", required = false) Integer page,
-                                               @RequestParam(value = "limit",required = false) Integer limit) {
+    @GetMapping("/user")
+    public ResponseEntity<?> getOrdersByUserId(@RequestParam("user_id") Long userId,
+                                               @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                               @RequestParam(value = "limit",defaultValue = "5") Integer limit) {
         try {
-            return ResponseEntity.ok().body(new SuccessResponse<>(orderService.getAllOrdersByUserId(userId,
-                    PageRequest.of(page, limit)),
-                    "Get all orders with user id: " + userId));
+            Page<OrderResponse> orders = orderService.getAllOrdersByUserId(userId,
+                    PageRequest.of(page, limit));
+            int totalPages = orders.getTotalPages();
+            if (totalPages == 0) {
+                return ResponseEntity.ok(new SuccessResponse<>("Products page is empty!"));
+            }
+            if (orders.getContent().isEmpty()) {
+                return ResponseEntity.ok(new SuccessResponse<>("Products page is empty!"));
+            }
+            return ResponseEntity.ok().body(new SuccessResponse<>(OrderListResponse.builder()
+                    .ordersList(orders)
+                    .totalPage(totalPages)
+                    .build()));
         } catch (DataNotFoundException e) {
             return ResponseEntity.badRequest().body(new ErrorResponse<>(e.getMessage()));
         }

@@ -14,8 +14,8 @@ import org.springframework.data.domain.Page;
 @Builder
 public class CommentListResponse {
 
-    private Page<Comment> comments;
+    private Page<CommentResponse> comments;
 
-    @JsonProperty("total_pages")
+    @JsonProperty("total_page")
     private int totalPages;
 }

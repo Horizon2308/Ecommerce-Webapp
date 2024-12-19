@@ -15,12 +15,9 @@ import { ProductManagermentComponent } from './admin/components/product-managerm
 import { AddProductComponent } from './admin/components/add-product/add-product.component';
 import { StaffManagermentComponent } from './admin/components/staff-managerment/staff-managerment.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
-import { PostCounterComponent } from './admin/components/post-counter/post-counter.component';
 import { OrderManagermentComponent } from './admin/components/order-managerment/order-managerment.component';
 import { EditOrderComponent } from './admin/components/edit-order/edit-order.component';
 import { BlogComponent } from './user/components/blog/blog.component';
-import { CustomerManagermentComponent } from './admin/components/customer-managerment/customer-managerment.component';
-import { CalendarComponent } from './admin/components/calendar/calendar.component';
 import { IncomeManagermentComponent } from './admin/components/income-managerment/income-managerment.component';
 import { RawProductsManagerComponent } from './manager/components/raw-products-manager/raw-products-manager.component';
 import { TransactionDocumentManagerComponent } from './manager/components/import-transaction-document/transaction-document-manager/transaction-document-manager.component';
@@ -37,14 +34,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'products/:id', component: DetailProductComponent },
+  {
+    path: 'products/:id',
+    component: DetailProductComponent,
+    canActivate: [AuthGuardFn],
+  },
   { path: 'orders', component: OrderComponent, canActivate: [AuthGuardFn] },
   {
     path: 'user-profile',
     component: UserProfileComponent,
     canActivate: [AuthGuardFn],
   },
-  { path: 'orders/:id', component: OrderConfirmComponent },
+  { path: 'orders/manager', component: OrderConfirmComponent },
   //  Admin
   {
     path: 'admin',
@@ -72,11 +73,6 @@ const routes: Routes = [
     canActivate: [AdminGuardFn],
   },
   {
-    path: 'admin/pos-counter',
-    component: PostCounterComponent,
-    canActivate: [AdminGuardFn],
-  },
-  {
     path: 'admin/orders-manager',
     component: OrderManagermentComponent,
     canActivate: [AdminGuardFn],
@@ -84,16 +80,6 @@ const routes: Routes = [
   {
     path: 'admin/orders-manager/:id',
     component: EditOrderComponent,
-    canActivate: [AdminGuardFn],
-  },
-  {
-    path: 'admin/customers',
-    component: CustomerManagermentComponent,
-    canActivate: [AdminGuardFn],
-  },
-  {
-    path: 'admin/calendar',
-    component: CalendarComponent,
     canActivate: [AdminGuardFn],
   },
   {

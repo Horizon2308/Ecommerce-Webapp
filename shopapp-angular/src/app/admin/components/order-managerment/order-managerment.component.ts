@@ -7,6 +7,7 @@ import { OrderDetail } from 'src/app/user/models/order.detail';
 import { OrderService } from 'src/app/user/services/order.service';
 import { UserService } from 'src/app/user/services/user.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/app/user/environments/environment';
 
 @Component({
   selector: 'app-order-managerment',
@@ -23,6 +24,9 @@ export class OrderManagermentComponent implements OnInit {
   visiblePages: number[] = [];
   keyword: string = '';
   listOfProductName: string = '';
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
 
   constructor(
     private userService: UserService,
@@ -91,8 +95,10 @@ export class OrderManagermentComponent implements OnInit {
         order.listOfProductName += orderDetails.product.name;
         order.listOfProductName += ', ';
       });
-      order.listOfProductName = order.listOfProductName
-        .substring(0, order.listOfProductName.length - 2);
+      order.listOfProductName = order.listOfProductName.substring(
+        0,
+        order.listOfProductName.length - 2
+      );
     });
   }
 

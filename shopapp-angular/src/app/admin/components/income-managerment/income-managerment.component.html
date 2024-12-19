@@ -72,27 +72,9 @@
       <hr />
       <ul class="app-menu">
         <li>
-          <a class="app-menu__item haha" routerLink="/admin/pos-counter"
-            ><i class="app-menu__icon bx bx-cart-alt"></i>
-            <span class="app-menu__label">POS Bán Hàng</span></a
-          >
-        </li>
-        <li>
           <a class="app-menu__item" routerLink="/admin"
             ><i class="app-menu__icon bx bx-tachometer"></i
             ><span class="app-menu__label">Bảng điều khiển</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/staffs"
-            ><i class="app-menu__icon bx bx-id-card"></i>
-            <span class="app-menu__label">Quản lý nhân viên</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/customers"
-            ><i class="app-menu__icon bx bx-user-voice"></i
-            ><span class="app-menu__label">Quản lý khách hàng</span></a
           >
         </li>
         <li>
@@ -107,34 +89,10 @@
             ><span class="app-menu__label">Quản lý đơn hàng</span></a
           >
         </li>
-        <!-- <li>
-          <a class="app-menu__item" href="table-data-banned.html"
-            ><i class="app-menu__icon bx bx-run"></i
-            ><span class="app-menu__label">Quản lý nội bộ </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="table-data-money.html"
-            ><i class="app-menu__icon bx bx-dollar"></i
-            ><span class="app-menu__label">Bảng kê lương</span></a
-          >
-        </li> -->
         <li>
           <a class="app-menu__item active" routerLink="/admin/income"
             ><i class="app-menu__icon bx bx-pie-chart-alt-2"></i
             ><span class="app-menu__label">Báo cáo doanh thu</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/calendar"
-            ><i class="app-menu__icon bx bx-calendar-check"></i
-            ><span class="app-menu__label">Lịch công tác </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="#"
-            ><i class="app-menu__icon bx bx-cog"></i
-            ><span class="app-menu__label">Cài đặt hệ thống</span></a
           >
         </li>
       </ul>
@@ -186,15 +144,6 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small danger coloured-icon">
-            <i class="icon fa-3x bx bxs-info-circle"></i>
-            <div class="info">
-              <h4>Bị cấm</h4>
-              <p><b>4 nhân viên</b></p>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-lg-3">
@@ -205,15 +154,6 @@
               <p>
                 <b>{{ totalMoney | number : "1.2" }} đ</b>
               </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon">
-            <i class="icon fa-3x bx bxs-user-badge"></i>
-            <div class="info">
-              <h4>Nhân viên mới</h4>
-              <p><b>3 nhân viên</b></p>
             </div>
           </div>
         </div>
@@ -340,77 +280,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div>
-              <h3 class="tile-title">NHÂN VIÊN MỚI</h3>
-            </div>
-            <div class="tile-body">
-              <table class="table table-hover table-bordered" id="sampleTable">
-                <thead>
-                  <tr>
-                    <th>Họ và tên</th>
-                    <th>Địa chỉ</th>
-                    <th>Ngày sinh</th>
-                    <th>Giới tính</th>
-                    <th>SĐT</th>
-                    <th>Chức vụ</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Hồ Thị Thanh Ngân</td>
-                    <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh</td>
-                    <td>12/02/1999</td>
-                    <td>Nữ</td>
-                    <td>0926737168</td>
-                    <td>Bán hàng</td>
-                  </tr>
-                  <tr>
-                    <td>Trần Khả Ái</td>
-                    <td>6 Nguyễn Lương Bằng, Tân Phú, Quận 7, Hồ Chí Minh</td>
-                    <td>22/12/1999</td>
-                    <td>Nữ</td>
-                    <td>0931342432</td>
-                    <td>Bán hàng</td>
-                  </tr>
-                  <tr>
-                    <td>Nguyễn Đặng Trọng Nhân</td>
-                    <td>59C Nguyễn Đình Chiểu, Quận 3, Hồ Chí Minh</td>
-                    <td>23/07/1996</td>
-                    <td>Nam</td>
-                    <td>0846881155</td>
-                    <td>Dịch vụ</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">DỮ LIỆU HÀNG THÁNG</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">THỐNG KÊ DOANH SỐ</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-right" style="font-size: 12px">
-        <p><b>Hệ thống quản lý V2.0 | Code by Trường</b></p>
       </div>
     </main>
     <!-- Essential javascripts for application to work-->

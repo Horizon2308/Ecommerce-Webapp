@@ -3,6 +3,7 @@ import { RawProductService } from '../../services/raw.product.service';
 import { RawProduct } from '../../models/raw.product';
 import { environment } from 'src/app/user/environments/environment';
 import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-raw-products-manager',
@@ -20,7 +21,16 @@ export class RawProductsManagerComponent implements OnInit {
   sortOption: number = 1;
   index: number = 0;
 
-  constructor(private rawProductService: RawProductService) {}
+  userName: string =
+    this.userService.getUserResponseFromLocalStorage()!.fullname;
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
+
+  constructor(
+    private rawProductService: RawProductService,
+    private userService: UserService
+  ) {}
   ngOnInit(): void {
     this.getAllRawProducts(
       this.sortOption,

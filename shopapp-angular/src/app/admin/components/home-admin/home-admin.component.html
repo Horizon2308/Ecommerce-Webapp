@@ -58,7 +58,7 @@
       <div class="app-sidebar__user">
         <img
           class="app-sidebar__user-avatar"
-          src={{this.avatar}}
+          src="{{ this.avatar }}"
           width="50px"
           alt="User Image"
         />
@@ -72,12 +72,6 @@
       <hr />
       <ul class="app-menu">
         <li>
-          <a class="app-menu__item haha" routerLink="/admin/pos-counter"
-            ><i class="app-menu__icon bx bx-cart-alt"></i>
-            <span class="app-menu__label">POS Bán Hàng</span></a
-          >
-        </li>
-        <li>
           <a class="app-menu__item active" routerLink="/admin"
             ><i class="app-menu__icon bx bx-tachometer"></i
             ><span class="app-menu__label">Bảng điều khiển</span></a
@@ -86,13 +80,7 @@
         <li>
           <a class="app-menu__item" routerLink="/admin/staffs"
             ><i class="app-menu__icon bx bx-id-card"></i>
-            <span class="app-menu__label">Quản lý nhân viên</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/customers"
-            ><i class="app-menu__icon bx bx-user-voice"></i
-            ><span class="app-menu__label">Quản lý khách hàng</span></a
+            <span class="app-menu__label">Quản lý tài khoản</span></a
           >
         </li>
         <li>
@@ -107,34 +95,10 @@
             ><span class="app-menu__label">Quản lý đơn hàng</span></a
           >
         </li>
-        <!-- <li>
-          <a class="app-menu__item" href="table-data-banned.html"
-            ><i class="app-menu__icon bx bx-run"></i
-            ><span class="app-menu__label">Quản lý nội bộ </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="table-data-money.html"
-            ><i class="app-menu__icon bx bx-dollar"></i
-            ><span class="app-menu__label">Bảng kê lương</span></a
-          >
-        </li> -->
         <li>
           <a class="app-menu__item" routerLink="/admin/income"
             ><i class="app-menu__icon bx bx-pie-chart-alt-2"></i
             ><span class="app-menu__label">Báo cáo doanh thu</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/calendar"
-            ><i class="app-menu__icon bx bx-calendar-check"></i
-            ><span class="app-menu__label">Lịch công tác </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="#"
-            ><i class="app-menu__icon bx bx-cog"></i
-            ><span class="app-menu__label">Cài đặt hệ thống</span></a
           >
         </li>
       </ul>
@@ -245,28 +209,6 @@
                           <span class="badge bg-danger">Đã hủy</span>
                         </td>
                       </tr>
-                      <!-- <tr>
-                        <td>ER3835</td>
-                        <td>Nguyễn Thị Mỹ Yến</td>
-                        <td>16.770.000 đ</td>
-                        <td>
-                          <span class="badge bg-warning">Đang vận chuyển</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>MD0837</td>
-                        <td>Triệu Thanh Phú</td>
-                        <td>9.400.000 đ</td>
-                        <td>
-                          <span class="badge bg-success">Đã hoàn thành</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>MT9835</td>
-                        <td>Đặng Hoàng Phúc</td>
-                        <td>40.650.000 đ</td>
-                        <td><span class="badge bg-danger">Đã hủy </span></td>
-                      </tr> -->
                     </tbody>
                   </table>
                 </div>
@@ -277,7 +219,7 @@
             <!-- col-12 -->
             <div class="col-md-12">
               <div class="tile">
-                <h3 class="tile-title">Khách hàng mới</h3>
+                <h3 class="tile-title">Tài khoản mới</h3>
                 <div>
                   <table class="table table-hover">
                     <thead>
@@ -307,48 +249,8 @@
             <!-- / col-12 -->
           </div>
         </div>
-        <!--END left-->
-        <!--Right-->
-        <div class="col-md-12 col-lg-6">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="tile">
-                <h3 class="tile-title">Dữ liệu 6 tháng đầu vào</h3>
-                <div class="embed-responsive embed-responsive-16by9">
-                  <canvas
-                    class="embed-responsive-item"
-                    id="lineChartDemo"
-                  ></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="tile">
-                <h3 class="tile-title">Thống kê 6 tháng doanh thu</h3>
-                <div class="embed-responsive embed-responsive-16by9">
-                  <canvas
-                    class="embed-responsive-item"
-                    id="barChartDemo"
-                  ></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--END right-->
       </div>
 
-      <div class="text-center" style="font-size: 13px">
-        <p>
-          <b
-            >Copyright
-            <script type="text/javascript">
-              document.write(new Date().getFullYear());
-            </script>
-            Phần mềm quản lý bán hàng | Dev By Trường
-          </b>
-        </p>
-      </div>
     </main>
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->

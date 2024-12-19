@@ -38,7 +38,6 @@
               >Xuất hàng hóa</a
             >
           </li>
-          <li><a routerLink="/manager/provider-manager">Danh sách NCC</a></li>
           <li>
             <a class="active" routerLink="/manager/store-manager"
               >Danh sách Cửa hàng</a
@@ -59,8 +58,12 @@
           (change)="searchProducts()"
         />
         <div class="user-info">
-          <span>Username</span>
-          <img src="https://via.placeholder.com/40" alt="User" />
+          <span>{{ userName }}</span>
+          <img
+            style="height: 50px; width: auto"
+            src="{{ this.avatar }}"
+            alt="User"
+          />
         </div>
       </header>
       <div class="content">
@@ -73,35 +76,35 @@
           <button id="create-button" (click)="onAddModalOpen()">Tạo mới</button>
           <app-modal [(showModal)]="isAddModalOpen" (close)="onAddModalClose()">
             <!-- <div class="modal-content"> -->
-              
-              <h2>Tạo mới</h2>
-              <form id="create-form">
-                <label for="store-name">Tên CH:</label>
-                <input
-                  type="text"
-                  id="store-name"
-                  name="name"
-                  [(ngModel)]="storeDTO.name"
-                  required
-                />
-                <label for="store-phone">SDT:</label>
-                <input
-                  type="text"
-                  id="store-phone"
-                  name="phone_number"
-                  [(ngModel)]="storeDTO.phone_number"
-                  required
-                />
-                <label for="store-address">Địa chỉ:</label>
-                <input
-                  type="text"
-                  id="store-address"
-                  name="address"
-                  [(ngModel)]="storeDTO.address"
-                  required
-                />
-                <button type="submit" (click)="addStore()">Tạo</button>
-              </form>
+
+            <h2>Tạo mới</h2>
+            <form id="create-form">
+              <label for="store-name">Tên CH:</label>
+              <input
+                type="text"
+                id="store-name"
+                name="name"
+                [(ngModel)]="storeDTO.name"
+                required
+              />
+              <label for="store-phone">SDT:</label>
+              <input
+                type="text"
+                id="store-phone"
+                name="phone_number"
+                [(ngModel)]="storeDTO.phone_number"
+                required
+              />
+              <label for="store-address">Địa chỉ:</label>
+              <input
+                type="text"
+                id="store-address"
+                name="address"
+                [(ngModel)]="storeDTO.address"
+                required
+              />
+              <button type="submit" (click)="addStore()">Tạo</button>
+            </form>
             <!-- </div> -->
           </app-modal>
         </div>
@@ -139,47 +142,40 @@
                   Xóa
                 </button>
               </td>
-          
             </tr>
             <app-modal
-                [(showModal)]="isUpdateModelOpen"
-                (close)="onUpdateModalClose()"
-              >
-               
-                  
-                  <h2>Sửa cửa hàng</h2>
-                  
-                    <label for="store-name">Tên CH:</label>
-                    <input
-                      type="text"
-                      id="store-name"
-                      name="name"
-                      [value]="updatedStoreDTO.name"
-                      [(ngModel)]="updatedStoreDTO.name"
-                      required
-                    />
-                    <label for="store-phone">SDT:</label>
-                    <input
-                      type="text"
-                      id="store-phone"
-                      name="phone_number"
-                      [(ngModel)]="updatedStoreDTO.phone_number"
-                      required
-                    />
-                    <label for="store-address">Địa chỉ:</label>
-                    <input
-                      type="text"
-                      id="store-address"
-                      name="address"
-                      [(ngModel)]="updatedStoreDTO.address"
-                      required
-                    />
-                    <button type="submit" (click)="updateStore()">
-                      Cập nhật
-                    </button>
-                 
-                
-              </app-modal>
+              [(showModal)]="isUpdateModelOpen"
+              (close)="onUpdateModalClose()"
+            >
+              <h2>Sửa cửa hàng</h2>
+
+              <label for="store-name">Tên CH:</label>
+              <input
+                type="text"
+                id="store-name"
+                name="name"
+                [value]="updatedStoreDTO.name"
+                [(ngModel)]="updatedStoreDTO.name"
+                required
+              />
+              <label for="store-phone">SDT:</label>
+              <input
+                type="text"
+                id="store-phone"
+                name="phone_number"
+                [(ngModel)]="updatedStoreDTO.phone_number"
+                required
+              />
+              <label for="store-address">Địa chỉ:</label>
+              <input
+                type="text"
+                id="store-address"
+                name="address"
+                [(ngModel)]="updatedStoreDTO.address"
+                required
+              />
+              <button type="submit" (click)="updateStore()">Cập nhật</button>
+            </app-modal>
           </tbody>
         </table>
       </div>

@@ -1,8 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TransactionDocument } from 'src/app/manager/models/transaction.document';
 import { TransactionDocumentService } from 'src/app/manager/services/transaction.document.service';
+import { DialogConfirmComponent } from 'src/app/ultils/dialog-confirm/dialog-confirm.component';
+import { environment } from 'src/app/user/environments/environment';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-transaction-document-manager',
@@ -20,8 +24,16 @@ export class TransactionDocumentManagerComponent implements OnInit {
   sortOption: number = 1;
   index: number = 0;
 
+  userName: string =
+    this.userService.getUserResponseFromLocalStorage()!.fullname;
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
+
   constructor(
     private transactionDocumentService: TransactionDocumentService,
+    private userService: UserService,
+    private dialog: MatDialog,
     private router: Router
   ) {}
   ngOnInit(): void {
@@ -69,6 +81,38 @@ export class TransactionDocumentManagerComponent implements OnInit {
       this.currentPage,
       this.itemsPerPage
     );
+  }
+
+  deleteTransactionDocument(id: number): void {
+    this.transactionDocumentService.deleteTransactionDocument(id).subscribe({
+      next: (response: any) => {
+        let dialogConfirm = this.dialog.open(DialogConfirmComponent, {
+          width: '250px',
+          data: {
+            title: 'Xóa phiếu nhập',
+            message: 'Xóa thành công thành công',
+          },
+        });
+        dialogConfirm.afterClosed().subscribe((result) => {
+          if (result) {
+            this.getAllTransactionDocuments(
+              this.sortOption,
+              this.keyword,
+              this.currentPage,
+              this.itemsPerPage
+            );
+          }
+        });
+      },
+      complete: () => {
+        debugger;
+      },
+      error: (error: any) => {
+        debugger;
+        alert(error.error);
+        console.error('Error creating transaction document:', error);
+      },
+    });
   }
 
   searchProducts() {

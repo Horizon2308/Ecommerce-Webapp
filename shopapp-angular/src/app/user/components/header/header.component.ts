@@ -56,6 +56,10 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/login']);
     } else if (index === 3) {
       this.router.navigate(['/admin']);
+    } else if (index == 4) {
+      this.router.navigate(['/manager/raw-products-manager']);
+    } else if (index === 1) {
+      this.router.navigate(['/orders/manager']);
     }
     this.isPopoverOpen = false; // Close the popover after clicking an item
   }

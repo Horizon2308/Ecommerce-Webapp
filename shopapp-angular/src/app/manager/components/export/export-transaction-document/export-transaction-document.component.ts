@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TransactionDocument } from 'src/app/manager/models/transaction.document';
 import { TransactionDocumentService } from 'src/app/manager/services/transaction.document.service';
+import { environment } from 'src/app/user/environments/environment';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-export-transaction-document',
@@ -18,9 +20,13 @@ export class ExportTransactionDocumentComponent implements OnInit {
   keyword: string = '';
   sortOption: number = 1;
   index: number = 0;
+  userName: string =
+    this.userService.getUserResponseFromLocalStorage()!.fullname;
+  avatar = `${environment.apiBaseUrl}/users/avatar/${this.userService.getUserResponseFromLocalStorage()!.avatar}`
 
   constructor(
     private transactionDocumentService: TransactionDocumentService,
+    private userService: UserService,
     private router: Router
   ) {}
   ngOnInit(): void {

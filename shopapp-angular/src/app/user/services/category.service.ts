@@ -9,7 +9,7 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
   constructor(private http: HttpClient) {}
-  private readonly urlGetAllCategories = `${environment.apiBaseUrl}/categories`;
+  private readonly urlGetAllCategories = `${environment.apiNest}/categories`;
   getAllCategories(page: number, limit: number): Observable<any> {
     return this.http.get<Category[]>(this.urlGetAllCategories);
   }

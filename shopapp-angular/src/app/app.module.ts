@@ -31,13 +31,10 @@ import { AddProductComponent } from './admin/components/add-product/add-product.
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { StaffManagermentComponent } from './admin/components/staff-managerment/staff-managerment.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
-import { PostCounterComponent } from './admin/components/post-counter/post-counter.component';
 import { OrderManagermentComponent } from './admin/components/order-managerment/order-managerment.component';
 import { EditOrderComponent } from './admin/components/edit-order/edit-order.component';
 import { BlogComponent } from './user/components/blog/blog.component';
-import { CustomerManagermentComponent } from './admin/components/customer-managerment/customer-managerment.component';
 import { IncomeManagermentComponent } from './admin/components/income-managerment/income-managerment.component';
-import { CalendarComponent } from './admin/components/calendar/calendar.component';
 import { RawProductsManagerComponent } from './manager/components/raw-products-manager/raw-products-manager.component';
 import { TransactionDocumentManagerComponent } from './manager/components/import-transaction-document/transaction-document-manager/transaction-document-manager.component';
 import { TransactionDocumentDetailComponent } from './manager/components/import-transaction-document/transaction-document-detail/transaction-document-detail.component';
@@ -49,6 +46,7 @@ import { ExportTransactionDocumentComponent } from './manager/components/export/
 import { AddExportTransactionDocumentComponent } from './manager/components/export/add-export-transaction-document/add-export-transaction-document.component';
 import { ExportTransactionDocumentDetailsComponent } from './manager/components/export/export-transaction-document-details/export-transaction-document-details.component';
 import { DdMmYYYYDatePipe } from './dd-mm-yyyy-date.pipe';
+import { UsernameAvatarComponent } from './ultils/username-avatar/username-avatar.component';
 
 @NgModule({
   declarations: [
@@ -71,13 +69,10 @@ import { DdMmYYYYDatePipe } from './dd-mm-yyyy-date.pipe';
     AddProductComponent,
     StaffManagermentComponent,
     AddUserComponent,
-    PostCounterComponent,
     OrderManagermentComponent,
     EditOrderComponent,
     BlogComponent,
-    CustomerManagermentComponent,
     IncomeManagermentComponent,
-    CalendarComponent,
     RawProductsManagerComponent,
     TransactionDocumentManagerComponent,
     TransactionDocumentDetailComponent,
@@ -89,6 +84,7 @@ import { DdMmYYYYDatePipe } from './dd-mm-yyyy-date.pipe';
     AddExportTransactionDocumentComponent,
     ExportTransactionDocumentDetailsComponent,
     DdMmYYYYDatePipe,
+    UsernameAvatarComponent,
   ],
   imports: [
     BrowserModule,

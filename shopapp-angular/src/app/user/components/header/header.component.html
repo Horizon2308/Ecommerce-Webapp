@@ -82,11 +82,23 @@
                     <a class="popover-item" (click)="handleItemClick(0)"
                       >Tài khoản của tôi</a
                     >
-                    <a *ngIf="userResponse.role.id != 1" class="popover-item" (click)="handleItemClick(1)"
+                    <a
+                      *ngIf="userResponse.role.id != 1"
+                      class="popover-item"
+                      (click)="handleItemClick(1)"
                       >Đơn mua</a
                     >
-                    <a *ngIf="userResponse.role.id == 1" class="popover-item" (click)="handleItemClick(3)"
+                    <a
+                      *ngIf="userResponse.role.id == 1"
+                      class="popover-item"
+                      (click)="handleItemClick(3)"
                       >Trang quản lý</a
+                    >
+                    <a
+                      *ngIf="userResponse.role.id == 1"
+                      class="popover-item"
+                      (click)="handleItemClick(4)"
+                      >Trang quản lý kho</a
                     >
                     <a class="popover-item" (click)="handleItemClick(2)"
                       >Đăng xuất</a

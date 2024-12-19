@@ -12,7 +12,7 @@
       [(ngModel)]="keyword"
       placeholder="Tìm sản phẩm"
     />
-    <select
+    <!-- <select
       class="form-control product-category"
       [(ngModel)]="selectedCategoryId"
     >
@@ -20,18 +20,39 @@
       <option *ngFor="let category of categories" [value]="category.id">
         {{ category.name }}
       </option>
-    </select>
+    </select> -->
     <div class="click_search">
-      <button class="btn btn-primary" (click)="searchProducts()">Tìm kiếm</button>
+      <button class="btn btn-primary" (click)="searchProducts()">
+        Tìm kiếm
+      </button>
     </div>
-    
+  </div>
+  <!-- Tag Filter Section -->
+  <div class="tag-section">
+    <div class="container text-center">
+      <span
+        class="badge badge-secondary mx-1"
+        style="cursor: pointer; color: #000"
+        (click)="onCategoryId(0)"
+        >Tất cả loại hoa</span
+      >
+      <span
+        *ngFor="let category of categories"
+        class="badge badge-secondary mx-1"
+        style="cursor: pointer; color: #000"
+        (click)="onCategoryId(category.id)"
+        >{{ category.name }}</span
+      >
+    </div>
   </div>
   <div class="row">
     <div class="col-lg-4 col-md-6" *ngFor="let product of products">
       <div class="product-item" (click)="onProductClick(product.id)">
         <img [src]="product.url" alt="Product Image" class="product-image" />
         <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-price">Giá: {{ product.price | number : "1.2" }} vnđ</p>
+        <p class="product-price">
+          Giá: {{ product.price | number : "1.2" }} vnđ
+        </p>
       </div>
     </div>
   </div>
@@ -63,7 +84,5 @@
       </li>
     </ul>
   </nav>
-  
 </div>
 <app-footer></app-footer>
-

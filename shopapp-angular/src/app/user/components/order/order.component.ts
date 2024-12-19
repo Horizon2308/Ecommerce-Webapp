@@ -104,7 +104,7 @@ export class OrderComponent implements OnInit {
     debugger;
     this.ghnService.getProvince().subscribe({
       next: (response: any) => {
-        debugger;
+
         this.provinces = response.data.map((province: any) => {
           return {
             provinceId: province.ProvinceID,
@@ -114,11 +114,11 @@ export class OrderComponent implements OnInit {
         console.log('Get provinces successfully!');
       },
       complete: () => {
-        debugger;
+
         console.log('Completed!');
       },
       error: (error: any) => {
-        debugger;
+
         console.error('Error fetching provinces:', error);
       },
     });

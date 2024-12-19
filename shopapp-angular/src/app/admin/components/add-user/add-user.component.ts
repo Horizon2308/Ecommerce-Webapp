@@ -71,6 +71,7 @@ export class AddUserComponent implements OnInit {
         // Sử dụng kiểu Role[]
         debugger;
         this.roles = roles;
+        this.roles.splice(0, 1);
       },
       complete: () => {
         debugger;

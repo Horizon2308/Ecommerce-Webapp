@@ -78,11 +78,11 @@ CREATE TABLE likes (
 ALTER TABLE comments ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ALTER TABLE comments ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
-"user_id": 1,
+"user_id": 11,
   	"content": "You look like a fuking bitch",
   	"likes": 0,
   	"parent_id": 0,
-  	"product_id": 1
+  	"product_id": 15008
 
 CREATE TABLE raw_products (
     id INT AUTO_INCREMENT PRIMARY KEY,

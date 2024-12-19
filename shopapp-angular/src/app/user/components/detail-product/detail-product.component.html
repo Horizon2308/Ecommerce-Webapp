@@ -79,76 +79,96 @@
             <button (click)="increaseQuantity()">+</button>
           </div>
         </div>
-
       </div>
       <div class="description-container">
         <div class="description-title">Mô tả Sản Phẩm</div>
         <p class="description-text">
-          {{ product?.description }} 
+          {{ product?.description }}
         </p>
-    </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="comment-section">
   <h2>Bình luận</h2>
   <div class="comment-form">
-      <input type="text" id="name" placeholder="Tên của bạn">
-      <textarea id="comment" placeholder="Viết bình luận..."></textarea>
-      <button type="button" onclick="addComment()">Gửi bình luận</button>
+    <textarea
+      [(ngModel)]="commentDTO.content"
+      placeholder="Viết bình luận..."
+    ></textarea>
+    <button type="button" (click)="addComment()">Gửi bình luận</button>
   </div>
   <div class="comments-list">
-      <!-- Bình luận mẫu từ người khác -->
-      <div class="comment">
-          <div class="comment-header">Nguyễn Văn A</div>
-          <div class="comment-body">Sản phẩm rất tốt, tôi rất hài lòng!</div>
-          <div class="comment-actions">
-              <button onclick="vote(this, 1)">&#x25B2;</button>
-              <span class="votes">0</span>
-              <button onclick="vote(this, -1)">&#x25BC;</button>
-          </div>
+    <div class="comment" *ngFor="let comment of comments">
+      <div style="display: flex">
+        <div class="comment-header">{{ comment.username }}</div>
+        <span style="margin-left: 20px">{{
+          comment.created_at | ddMmYYYYDate
+        }}</span>
       </div>
-      <div class="comment">
-          <div class="comment-header">Trần Thị B</div>
-          <div class="comment-body">Chất lượng tốt, giá cả hợp lý. Sẽ ủng hộ dài lâu.</div>
-          <div class="comment-actions">
-              <button onclick="vote(this, 1)">&#x25B2;</button>
-              <span class="votes">0</span>
-              <button onclick="vote(this, -1)">&#x25BC;</button>
-          </div>
+      <div class="comment-body">{{ comment.content }}</div>
+      <div class="comment-actions">
+        <button (click)="likeButton(comment.id)">
+          {{ comment.isLikedByThisUser ? "❤️" : "♡" }} {{ comment.likes }}
+        </button>
+        <button style="font-size: 15px;">Reply</button>
       </div>
-      <!-- Các bình luận mới sẽ xuất hiện ở đây -->
+      <!-- <div class="replies">
+              <div class="reply-form" *ngIf="comment.showReply">
+                  <textarea #replyBody placeholder="Viết phản hồi..."></textarea>
+                  <button type="button" >Gửi phản hồi</button>
+              </div>
+              <div class="comment" *ngFor="let reply of comment.replies">
+                  <div class="comment-header">{{reply.name}}</div>
+                  <div class="comment-body">{{reply.body}}</div>
+                  <div class="comment-actions">
+                      <button >
+                        {{ reply.likedByUser ? '❤️' : '♡' }} {{ reply.likes }}
+                      </button>
+                      <button (click)="reply.showReply = !reply.showReply">Reply</button>
+                  </div>
+                  <div class="replies">
+                      <div class="reply-form" *ngIf="reply.showReply">
+                          <input type="text" #nestedReplyName placeholder="Tên của bạn">
+                          <textarea #nestedReplyBody placeholder="Viết phản hồi..."></textarea>
+                          <button type="button" (click)="addReply(reply, nestedReplyName.value, nestedReplyBody.value)">Gửi phản hồi</button>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="currentPage > 0">
+          <a class="page-link" (click)="onPageChange(0)">First</a>
+        </li>
+        <li class="page-item" *ngIf="currentPage > 0">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+        </li>
+        <ng-container *ngFor="let page of visiblePages">
+          <li
+            class="page-item"
+            [ngClass]="{ active: page === currentPage + 1 }"
+          >
+            <a class="page-link" (click)="onPageChange(page - 1)">{{ page }}</a>
+          </li>
+        </ng-container>
+        <li class="page-item" *ngIf="currentPage < totalPages - 1">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">
+            <i class="fa fa-chevron-right"></i>
+          </a>
+        </li>
+        <li class="page-item" *ngIf="currentPage < totalPages - 1">
+          <a class="page-link" (click)="onPageChange(totalPages - 1)">Last</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
-
-<script>
-  function addComment() {
-      var name = document.getElementById('name').value;
-      var comment = document.getElementById('comment').value;
-
-      if (name && comment) {
-          var commentSection = document.querySelector('.comments-list');
-          var newComment = document.createElement('div');
-          newComment.classList.add('comment');
-
-          var commentHeader = document.createElement('div');
-          commentHeader.classList.add('comment-header');
-          commentHeader.textContent = name;
-
-          var commentBody = document.createElement('div');
-          commentBody.classList.add('comment-body');
-          commentBody.textContent = comment;
-
-          newComment.appendChild(commentHeader);
-          newComment.appendChild(commentBody);
-          commentSection.appendChild(newComment);
-
-          // Xóa nội dung trong input và textarea sau khi gửi bình luận
-          document.getElementById('name').value = '';
-          document.getElementById('comment').value = '';
-      }
-  }
-</script>
 
 <app-footer>
   <footer></footer>

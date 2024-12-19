@@ -8,6 +8,7 @@ import com.duchung.shopappspring.models.User;
 import com.duchung.shopappspring.repositories.CommentRepository;
 import com.duchung.shopappspring.repositories.ProductRepository;
 import com.duchung.shopappspring.repositories.UserRepository;
+import com.duchung.shopappspring.responses.CommentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,11 +24,12 @@ public class CommentService implements ICommentService {
     private final UserRepository userRepository;
 
     @Override
-    public Page<Comment> getCommentsByProductId(Long productId, Pageable pageable) throws DataNotFoundException {
+    public Page<CommentResponse> getCommentsByProductId(Long productId, Pageable pageable) throws DataNotFoundException {
         if (!productRepository.existsById(productId)) {
             throw new DataNotFoundException("Product not found!");
         }
-        return commentRepository.findAllByIdOrderByLikesDesc(productId, pageable);
+        Product product = productRepository.findById(productId).get();
+        return commentRepository.findAllByProduct(product, pageable).map(this::convertToCommentResponse);
     }
 
     @Override
@@ -55,6 +57,18 @@ public class CommentService implements ICommentService {
                 .content(commentDTO.getContent())
                 .likes(0L)
                 .parent_id(0L)
+                .build();
+    }
+
+    private CommentResponse convertToCommentResponse(Comment comment) {
+        return CommentResponse.builder()
+                .id(comment.getId())
+                .productId(comment.getProduct().getId())
+                .content(comment.getContent())
+                .likes(comment.getLikes())
+                .parent_id(comment.getParent_id())
+                .username(comment.getUser().getFullName())
+                .createdAt(comment.getCreateAt())
                 .build();
     }
 }

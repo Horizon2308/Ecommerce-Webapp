@@ -32,6 +32,9 @@ export class StaffManagermentComponent implements OnInit {
   visiblePages: number[] = [];
   updatedStaff: UserDTO = {} as UserDTO;
   roles: Role[] = [];
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
 
   @ViewChild('closeUpdate', { static: false }) closeUpdate:
     | ElementRef

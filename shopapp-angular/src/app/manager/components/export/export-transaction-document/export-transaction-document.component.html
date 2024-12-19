@@ -38,9 +38,6 @@
               >Xuất hàng hóa</a
             >
           </li>
-          <li>
-            <a routerLink="/manager/provider-manager">Danh sách NCC</a>
-          </li>
           <li><a routerLink="/manager/store-manager">Danh sách Cửa hàng</a></li>
         </ul>
       </nav>
@@ -52,8 +49,12 @@
       <header>
         <input type="text" placeholder="Tìm kiếm..." />
         <div class="user-info">
-          <span>Username</span>
-          <img src="https://via.placeholder.com/40" alt="User" />
+          <span>{{ userName }}</span>
+          <img
+            style="height: 50px; width: auto"
+            src="{{ this.avatar }}"
+            alt="User"
+          />
         </div>
       </header>
       <div class="content">
@@ -99,14 +100,14 @@
                 <td>{{ transactionDocument.created_at | ddMmYYYYDate }}</td>
                 <td>
                   <button
-                  type="detail"
-                  class="detail-button"
-                  (click)="
-                    transactionDocumentDetailsClick(transactionDocument.id)
-                  "
-                >
-                  Chi tiết
-                </button>
+                    type="detail"
+                    class="detail-button"
+                    (click)="
+                      transactionDocumentDetailsClick(transactionDocument.id)
+                    "
+                  >
+                    Chi tiết
+                  </button>
                 </td>
                 <td>
                   <button type="delete" class="delete-button">Xóa</button>

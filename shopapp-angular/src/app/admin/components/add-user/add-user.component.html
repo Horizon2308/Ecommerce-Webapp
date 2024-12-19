@@ -184,12 +184,6 @@
       <hr />
       <ul class="app-menu">
         <li>
-          <a class="app-menu__item haha" routerLink="/admin/pos-counter"
-            ><i class="app-menu__icon bx bx-cart-alt"></i>
-            <span class="app-menu__label">POS Bán Hàng</span></a
-          >
-        </li>
-        <li>
           <a class="app-menu__item" routerLink="/admin"
             ><i class="app-menu__icon bx bx-tachometer"></i
             ><span class="app-menu__label">Bảng điều khiển</span></a
@@ -198,13 +192,7 @@
         <li>
           <a class="app-menu__item active" routerLink="/admin/staffs"
             ><i class="app-menu__icon bx bx-id-card"></i>
-            <span class="app-menu__label">Quản lý nhân viên</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/customers"
-            ><i class="app-menu__icon bx bx-user-voice"></i
-            ><span class="app-menu__label">Quản lý khách hàng</span></a
+            <span class="app-menu__label">Quản lý tài khoản</span></a
           >
         </li>
         <li>
@@ -219,34 +207,10 @@
             ><span class="app-menu__label">Quản lý đơn hàng</span></a
           >
         </li>
-        <!-- <li>
-          <a class="app-menu__item" href="table-data-banned.html"
-            ><i class="app-menu__icon bx bx-run"></i
-            ><span class="app-menu__label">Quản lý nội bộ </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="table-data-money.html"
-            ><i class="app-menu__icon bx bx-dollar"></i
-            ><span class="app-menu__label">Bảng kê lương</span></a
-          >
-        </li> -->
         <li>
           <a class="app-menu__item" routerLink="/admin/income"
             ><i class="app-menu__icon bx bx-pie-chart-alt-2"></i
             ><span class="app-menu__label">Báo cáo doanh thu</span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" routerLink="/admin/calendar"
-            ><i class="app-menu__icon bx bx-calendar-check"></i
-            ><span class="app-menu__label">Lịch công tác </span></a
-          >
-        </li>
-        <li>
-          <a class="app-menu__item" href="#"
-            ><i class="app-menu__icon bx bx-cog"></i
-            ><span class="app-menu__label">Cài đặt hệ thống</span></a
           >
         </li>
       </ul>
@@ -254,7 +218,9 @@
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/admin/staffs">Danh sách nhân viên</a></li>
+          <li class="breadcrumb-item">
+            <a routerLink="/admin/staffs">Danh sách nhân viên</a>
+          </li>
           <li class="breadcrumb-item"><a href="#">Thêm nhân viên</a></li>
         </ul>
       </div>
@@ -436,9 +402,7 @@
             <button class="btn btn-save" type="button" (click)="insertStaff()">
               Lưu lại
             </button>
-            <a class="btn btn-cancel" routerLink="/admin/staffs"
-              >Hủy bỏ</a
-            >
+            <a class="btn btn-cancel" routerLink="/admin/staffs">Hủy bỏ</a>
           </div>
         </div>
       </div>
@@ -480,9 +444,7 @@
             <button class="btn btn-save" type="button" (click)="createRole()">
               Lưu lại
             </button>
-            <a class="btn btn-cancel" data-dismiss="modal"  #closeRole
-              >Hủy bỏ</a
-            >
+            <a class="btn btn-cancel" data-dismiss="modal" #closeRole>Hủy bỏ</a>
             <BR />
           </div>
           <div class="modal-footer"></div>

@@ -4,6 +4,8 @@ import { Store } from '../../models/store';
 import { StoreDTO } from '../../dtos/store.dto';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogConfirmComponent } from 'src/app/ultils/dialog-confirm/dialog-confirm.component';
+import { UserService } from 'src/app/user/services/user.service';
+import { environment } from 'src/app/user/environments/environment';
 
 @Component({
   selector: 'app-store-manager',
@@ -30,7 +32,17 @@ export class StoreManagerComponent implements OnInit {
 
   updatedStoreId: number = 0;
 
-  constructor(private storeService: StoreService, private dialog: MatDialog) {}
+  userName: string =
+    this.userService.getUserResponseFromLocalStorage()!.fullname;
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
+
+  constructor(
+    private storeService: StoreService,
+    private userService: UserService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getAllStores(

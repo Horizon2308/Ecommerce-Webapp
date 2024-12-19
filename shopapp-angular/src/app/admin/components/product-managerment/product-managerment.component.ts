@@ -31,6 +31,9 @@ export class ProductManagermentComponent implements OnInit {
   updatedProduct: ProductUpdateDTO = {} as ProductUpdateDTO;
   categories: Category[] = [];
   user: string = '';
+  avatar = `${environment.apiBaseUrl}/users/avatar/${
+    this.userService.getUserResponseFromLocalStorage()!.avatar
+  }`;
 
   @ViewChild('closeUpdate', { static: false }) closeUpdate:
     | ElementRef
